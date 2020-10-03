@@ -1,0 +1,38 @@
+<configuration>
+
+	<appender name="CONSOLE"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>
+				%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+			</Pattern>
+		</layout>
+	</appender>
+
+	<appender name="aiAppender"
+		class="com.microsoft.applicationinsights.logback.ApplicationInsightsAppender">
+	</appender>
+
+	<logger name="com.example" level="debug" additivity="false">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="aiAppender" />
+	</logger>
+
+	<logger name="org.springframework.cloud" level="info"
+		additivity="false">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="aiAppender" />
+	</logger>
+
+	<logger name="org.springframework.boot" level="info"
+		additivity="false">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="aiAppender" />
+	</logger>
+
+	<root level="error">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="aiAppender" />
+	</root>
+
+</configuration>
